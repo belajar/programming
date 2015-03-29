@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+{% if page.include_toc %}
+{% include toc.html %}
+{% endif %}
+
+<div class="page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {{ content }}
+</div>
+
+{% include disqus.html %}

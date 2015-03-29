@@ -1,0 +1,42 @@
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl}}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">
+      Ditulis pada {{ post.date | date_to_string }}
+    </span>
+
+    <p>
+      {{ post.excerpt : | remove: '<p>' | remove: '</p>' }}<span>&#8230; <a href="{{ site.baseurl}}{{ post.url }}">(artikel penuh)</a></span>
+    </p>
+
+  </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">&laquo;</a>
+  {% else %}
+    <span class="pagination-item older">&laquo;</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">&raquo;</a>
+    {% else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">&raquo;</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item newer">&raquo;</span>
+  {% endif %}
+</div>

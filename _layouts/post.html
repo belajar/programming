@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+{% if page.include_toc %}
+{% include toc.html %}
+{% endif %}
+
+<div class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+
+  <div class="post-date">{{ page.date | date_to_string }}{% include level.html %}</div>
+  {{ content }}
+</div>
+
+{% assign author = site.authors[page.author] %}
+{% if author %}
+<div class="author">
+  <div style="margin-bottom:10px; font-style:italic">Mengenai penulis</div>
+  {% include author.html %}
+</div>
+{% endif %}
+
+<div class="related">
+  <h2>Artikel Berkaitan</h2>
+  <ul class="related-posts">
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% include disqus.html %}
