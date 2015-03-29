@@ -14,11 +14,6 @@ title: Home
 
     <span class="post-date">
       Ditulis pada {{ post.date | date_to_string }}
-
-      {% assign author = site.authors[post.author] %}
-      {% if author %}
-      <span> oleh <a href="/authors/{{ post.author }}.html">{{ author.name }}</a></span>
-      {% endif %}
     </span>
 
     <p>
