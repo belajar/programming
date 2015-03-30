@@ -13,8 +13,8 @@ relative_permalinks:  true
 title:              BelajarJS
 tagline:            'Belajar JavaScript !'
 description:        'Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.'
-url:                http://belajarjs.ml/
-baseurl:            ''
+url:                http://belajar.github.io/js/
+baseurl:            'js'
 paginate:           5
 excerpt_separator:  '<!--more-->'
 
