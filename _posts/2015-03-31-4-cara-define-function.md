@@ -70,6 +70,30 @@ var add = function(num1, num2) {
 }
 ```
 
+Cara ini tidak tertakhluk kepada *hoisting* seperti sebelum ini jadi jika anda cuba define
+function anda seperti berikut:-
+
+```javascript
+console.log(add(1, 2));
+var add = function (num1, num2) {
+    return num1 + num2;
+}
+```
+
+Anda akan mendapat `TypeError: undefined is not a function`. *Variable* `add` bagaimana pun masih tertakhluk kepada
+hoisting, jadi code sebenar yang dijalankan oleh JavaScript adalah seperti berikut:-
+
+```javascript
+var add = undefined;
+console.log(add(1, 2));
+add = function (num1, num2) {
+    return num1 + num2;
+}
+```
+
+*Function expression* memang digunakan secara meluas namun satu keburukkannya adalah ia menyusahkan proses
+debugging kerana function tersebut adalah *anonymous* - tidak mempunyai sebarang nama.
+
 ## Rujukan
 - http://davidbcalhoun.com/2011/different-ways-of-defining-functions-in-javascript-this-is-madness/
 - http://www.bryanbraun.com/2014/11/27/every-possible-way-to-define-a-javascript-function
