@@ -105,6 +105,24 @@ Ini juga anda akan biasa jumpa dalam banyak code JavaScript:-
 Tujuan utama cara ini digunakan adalah untuk mengelakkan penambahan *variable* baru yang tidak diperlukan ke dalam
 skop global JavaScript.
 
+# Cara 4 - Immediately invoked function (using + operator)
+Ianya sama dengan nombor `#4` di atas cuma menggunakan operator `+` berbanding `()`. Cara ini saya jumpa dalam
+code Twitter Bootstrap.
+
+```javascript
++function () {
+    alert('hello world');
+}();
+```
+Kedua-dua cara #3 dan #4 digunakan kerana dalam JavaScript code seperti berikut adalah tidak valid:-
+
+```javascript
+function () {
+    alert('hello world');
+}
+```
+Setiap *function* mesti mempunyai nama (*function statement*) ataupun jika ianya dalam bentuk *function expression*, ia mesti dirujuk (*assigned*) kepada *variable*. Tetapi kita tidak mahu menambahkan *variable* baru ke dalam skop global, jadi kita mesti ubah sedikit code tersebut supaya ia kekal sebagai *valid expression*. Dengan meletakkan *function* tersebut dalam *parantheses* `()` atau pun meletakkan operator `+` pada sebelum *function* tersebut, ia menjadikan *function* itu satu *expression*. 
+
 ## Rujukan
 - http://davidbcalhoun.com/2011/different-ways-of-defining-functions-in-javascript-this-is-madness/
 - http://www.bryanbraun.com/2014/11/27/every-possible-way-to-define-a-javascript-function
