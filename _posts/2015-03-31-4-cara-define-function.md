@@ -94,6 +94,17 @@ add = function (num1, num2) {
 *Function expression* memang digunakan secara meluas namun satu keburukkannya adalah ia menyusahkan proses
 debugging kerana function tersebut adalah *anonymous* - tidak mempunyai sebarang nama.
 
+## Cara 3 - Immediately invoked function
+Ini juga anda akan biasa jumpa dalam banyak code JavaScript:-
+
+```javascript
+(function () {
+    alert('hello world');
+}());
+```
+Tujuan utama cara ini digunakan adalah untuk mengelakkan penambahan *variable* baru yang tidak diperlukan ke dalam
+skop global JavaScript.
+
 ## Rujukan
 - http://davidbcalhoun.com/2011/different-ways-of-defining-functions-in-javascript-this-is-madness/
 - http://www.bryanbraun.com/2014/11/27/every-possible-way-to-define-a-javascript-function
