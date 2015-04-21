@@ -69,3 +69,6 @@ var add = function(num1, num2) {
     return num1 + num2;
 }
 ```
+
+## Rujukan
+- http://davidbcalhoun.com/2011/different-ways-of-defining-functions-in-javascript-this-is-madness/
