@@ -72,3 +72,4 @@ var add = function(num1, num2) {
 
 ## Rujukan
 - http://davidbcalhoun.com/2011/different-ways-of-defining-functions-in-javascript-this-is-madness/
+- http://www.bryanbraun.com/2014/11/27/every-possible-way-to-define-a-javascript-function
