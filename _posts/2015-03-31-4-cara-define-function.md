@@ -105,6 +105,19 @@ Ini juga anda akan biasa jumpa dalam banyak code JavaScript:-
 Tujuan utama cara ini digunakan adalah untuk mengelakkan penambahan *variable* baru yang tidak diperlukan ke dalam
 skop global JavaScript.
 
+Cara ini sangat berguna untuk kita mengawal skop program, contohnya untuk *alias* variable yang panjang namanya
+kepada variable yang lebih pendek tapi terhad kepada skop function tersebut sahaja.
+
+```javascript
+(function ($) {
+    $('form#order').submit(function() {
+        ...  
+    });
+}(jQuery));
+```
+Di luar daripada *function* objek sebenar dipanggil *jQuery* tapi dalam function di atas kita boleh mengakses
+objek tersebut melalui nama `$`.
+
 # Cara 4 - Immediately invoked function (using + operator)
 Ianya sama dengan nombor `#4` di atas cuma menggunakan operator `+` berbanding `()`. Cara ini saya jumpa dalam
 code Twitter Bootstrap.
