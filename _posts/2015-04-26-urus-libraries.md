@@ -24,3 +24,23 @@ kod tersebut bersama-sama aturcara yang kita sedang tulis ini.
 Setiap bahasa pengaturcaraan mempunyai mekanisma tersendiri untuk memasukkan kod pihak ketiga ini ke dalam
 aturcara kita. Ia biasanya dapat dikenali melalui fungsi seperti `import`, `require`, `include`, `load`,
 `use` dan sebagainya.
+
+Pada mulanya, proses mencari kod-kod pihak ketiga atau biasanya dipanggil *libraries* ini dilakukan secara
+manual. Maknanya, jika *programmer* A memerlukan kod berkaitan pemprosesan fail CSV, maka dia mungkin akan
+memulakan proses pencarian di laman enjin carian (*search engine*) atau bertanyakan di forum-forum berkaitan.
+Proses manual ini pada mulanya memadai namun masalah bermula apabila kod di dalam *libraries* ini turut
+bergantung kepada kod-kod lain.
+
+Contohnya A mungkin terjumpa kod `easycsv.php`. Dia pun memasukkan kod `easycsv.php` ini ke dalam kod beliau
+tetapi mendapat *error* seperti:-
+
+    Warning: include(basecsv.php): failed to open stream: No such file or directory in ..
+
+Rupa-rupanya kod `easycsv.php` turut bergantung kepada kod `basecsv.php` yang ditulis oleh programmer lain.
+Ini bermakna A perlu kembali mencari di mana hendak mendapatkan kod `basecsv.php` ini.
+
+<img src="http://i.imgur.com/8tz9TBH.png" class="img-displayed"></img>
+<span class="img-caption">http://www.electricmonk.nl/log/2008/08/07/dependency-resolving-algorithm/</span>
+
+Masalah *A depend on B and B depend on C* ini merupakan satu masalah klasik dalam Sains Komputer dan pelbagai
+*algorithm* telah pun dibina untuk menyelesaikan masalah ini.

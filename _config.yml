@@ -10,7 +10,7 @@ permalink:            :title.html
 relative_permalinks:  true
 
 # Setup
-title:              BelajarProgramming
+title:              BelajarPrg
 tagline:            'Belajar Programming !'
 description:        'Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.'
 url:                http://belajar.github.io/programming/
