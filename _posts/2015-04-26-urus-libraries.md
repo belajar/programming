@@ -37,10 +37,37 @@ tetapi mendapat *error* seperti:-
     Warning: include(basecsv.php): failed to open stream: No such file or directory in ..
 
 Rupa-rupanya kod `easycsv.php` turut bergantung kepada kod `basecsv.php` yang ditulis oleh programmer lain.
-Ini bermakna A perlu kembali mencari di mana hendak mendapatkan kod `basecsv.php` ini.
+Ini bermakna A perlu kembali mencari di mana hendak mendapatkan kod `basecsv.php` ini. Jika hanya melibatkan
+satu atau dua *libraries* sahaja, ia mungkin tidak begitu menyusahkan tapi apabila melibatkan jumlah *external
+libraries* yang banyak, satu solusi yang lebih baik amat diperlukan.
+
+Ketiadaan cara yang khusus untuk menyelesaikan masalah di atas akan mendorong *programmer* untuk mengambil
+tindakan seperti:-
+
+* Tidak menggunakan *external libraries* - mendorong kepada *re-inventing the wheel*.
+* Tidak mengemaskini *external libraries* yang digunakan kerana ia memerlukan sekali lagi proses mencari kemaskini
+yang baru.
+* *Copy-and-paste* kod antara projek.
+
+Masalah *A depend on B and B depend on C* ini merupakan satu masalah klasik dalam Sains Komputer dan pelbagai
+*algorithm* telah pun dibina untuk menyelesaikan masalah ini.
 
 <img src="http://i.imgur.com/8tz9TBH.png" class="img-displayed"></img>
 <span class="img-caption">http://www.electricmonk.nl/log/2008/08/07/dependency-resolving-algorithm/</span>
 
-Masalah *A depend on B and B depend on C* ini merupakan satu masalah klasik dalam Sains Komputer dan pelbagai
-*algorithm* telah pun dibina untuk menyelesaikan masalah ini.
+Berasaskan *algorithm* ini, setiap bahasa pengaturcaraan mempunyai *tools* tersendiri untuk menguruskan *libraries
+dependencies* ini. Berikut disenaraikan beberapa *tools* berkenaan:-
+
+* Python - PIP
+* PHP - Composer
+* .NET - Nuget
+* JavaScript - npm, bower
+* Haskell - Cabal
+* Lua - Luarocks
+* Ruby - Rubygems, bundler
+* Perl - CPAN
+
+
+## Rujukan
+* http://en.wikipedia.org/wiki/Dependency_graph
+* https://en.opensuse.org/openSUSE:Libzypp_satsolver
