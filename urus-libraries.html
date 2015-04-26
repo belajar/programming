@@ -9,7 +9,7 @@
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta property="og:type" content="article"/>
-  <meta property="og:title" content="Menguruskan Libraries/Dependencies"/>
+  <meta property="og:title" content="[Draf] - Menguruskan Libraries/Dependencies"/>
   <meta property="og:description" content="Bagaimana menguruskan libraries/dependencies secara sistematik dalam projek programming.
 "/>
   <meta property="og:url" content="http://www.belajarjs.ml/urus-libraries.html" />
@@ -17,7 +17,7 @@
 
   <title>
     
-      Menguruskan Libraries/Dependencies &middot; BelajarPrg
+      [Draf] - Menguruskan Libraries/Dependencies &middot; BelajarPrg
     
   </title>
 
@@ -100,7 +100,7 @@
       
 
 <div class="post">
-  <h1 class="post-title">Menguruskan Libraries/Dependencies</h1>
+  <h1 class="post-title">[Draf] - Menguruskan Libraries/Dependencies</h1>
 
   <div class="post-date">29 Mar 2015
 <span>
@@ -124,6 +124,58 @@ kod tersebut bersama-sama aturcara yang kita sedang tulis ini.</p>
 <p>Setiap bahasa pengaturcaraan mempunyai mekanisma tersendiri untuk memasukkan kod pihak ketiga ini ke dalam
 aturcara kita. Ia biasanya dapat dikenali melalui fungsi seperti <code>import</code>, <code>require</code>, <code>include</code>, <code>load</code>,
 <code>use</code> dan sebagainya.</p>
+
+<p>Pada mulanya, proses mencari kod-kod pihak ketiga atau biasanya dipanggil <em>libraries</em> ini dilakukan secara
+manual. Maknanya, jika <em>programmer</em> A memerlukan kod berkaitan pemprosesan fail CSV, maka dia mungkin akan
+memulakan proses pencarian di laman enjin carian (<em>search engine</em>) atau bertanyakan di forum-forum berkaitan.
+Proses manual ini pada mulanya memadai namun masalah bermula apabila kod di dalam <em>libraries</em> ini turut
+bergantung kepada kod-kod lain.</p>
+
+<p>Contohnya A mungkin terjumpa kod <code>easycsv.php</code>. Dia pun memasukkan kod <code>easycsv.php</code> ini ke dalam kod beliau
+tetapi mendapat <em>error</em> seperti:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Warning: include(basecsv.php): failed to open stream: No such file or directory in ..
+</code></pre></div>
+<p>Rupa-rupanya kod <code>easycsv.php</code> turut bergantung kepada kod <code>basecsv.php</code> yang ditulis oleh programmer lain.
+Ini bermakna A perlu kembali mencari di mana hendak mendapatkan kod <code>basecsv.php</code> ini. Jika hanya melibatkan
+satu atau dua <em>libraries</em> sahaja, ia mungkin tidak begitu menyusahkan tapi apabila melibatkan jumlah <em>external
+libraries</em> yang banyak, satu solusi yang lebih baik amat diperlukan.</p>
+
+<p>Ketiadaan cara yang khusus untuk menyelesaikan masalah di atas akan mendorong <em>programmer</em> untuk mengambil
+tindakan seperti:-</p>
+
+<ul>
+<li>Tidak menggunakan <em>external libraries</em> - mendorong kepada <em>re-inventing the wheel</em>.</li>
+<li>Tidak mengemaskini <em>external libraries</em> yang digunakan kerana ia memerlukan sekali lagi proses mencari kemaskini
+yang baru.</li>
+<li><em>Copy-and-paste</em> kod antara projek.</li>
+</ul>
+
+<p>Masalah <em>A depend on B and B depend on C</em> ini merupakan satu masalah klasik dalam Sains Komputer dan pelbagai
+<em>algorithm</em> telah pun dibina untuk menyelesaikan masalah ini.</p>
+
+<p><img src="http://i.imgur.com/8tz9TBH.png" class="img-displayed"></img>
+<span class="img-caption">http://www.electricmonk.nl/log/2008/08/07/dependency-resolving-algorithm/</span></p>
+
+<p>Berasaskan <em>algorithm</em> ini, setiap bahasa pengaturcaraan mempunyai <em>tools</em> tersendiri untuk menguruskan <em>libraries
+dependencies</em> ini. Berikut disenaraikan beberapa <em>tools</em> berkenaan:-</p>
+
+<ul>
+<li>Python - PIP</li>
+<li>PHP - Composer</li>
+<li>.NET - Nuget</li>
+<li>JavaScript - npm, bower</li>
+<li>Haskell - Cabal</li>
+<li>Lua - Luarocks</li>
+<li>Ruby - Rubygems, bundler</li>
+<li>Perl - CPAN</li>
+</ul>
+
+<h2 id="rujukan">Rujukan</h2>
+
+<ul>
+<li>http://en.wikipedia.org/wiki/Dependency_graph</li>
+<li>https://en.opensuse.org/openSUSE:Libzypp_satsolver</li>
+</ul>
 
 </div>
 
