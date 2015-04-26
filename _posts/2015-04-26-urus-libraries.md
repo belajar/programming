@@ -49,6 +49,8 @@ tindakan seperti:-
 yang baru.
 * *Copy-and-paste* kod antara projek.
 
+Jika diperhatikan pada proses mencari *libraries* di atas, kita akan dapati ianya adalah satu bentuk aktiviti rutin yang berulang dan hampir sama. Yang berbeza hanyalah pada nama *libraries* dan di mana ia dapat diperolehi. Jika *libraries* ini dapat dikumpulkan di satu tempat dan disusun dalam susunan tertentu, satu program khas dapat ditulis untuk mencari dan memasukkan *libraries* tersebut ke dalam aplikasi yang kita sedang bina. Daripada sinilah lahirnya konsep *package management*. 
+
 Masalah *A depend on B and B depend on C* ini merupakan satu masalah klasik dalam Sains Komputer dan pelbagai
 *algorithm* telah pun dibina untuk menyelesaikan masalah ini.
 
