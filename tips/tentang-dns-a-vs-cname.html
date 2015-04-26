@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Tentang DNS - A record vs CNAME"/>
+  <meta property="og:description" content="Penerangan ringkas berkaitan konsep asas dns - A record vs CNAME
+"/>
+  <meta property="og:url" content="http://www.belajarjs.ml/tips/tentang-dns-a-vs-cname.html" />
+  <meta property="og:image" content="http://www.belajarjs.ml/public/images/js.png"/>
+
+  <title>
+    
+      Tentang DNS - A record vs CNAME &middot; BelajarProgramming
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/programming/public/css/poole.css">
+  <link rel="stylesheet" href="/programming/public/css/syntax.css">
+  <link rel="stylesheet" href="/programming/public/css/hyde.css">
+  <link rel="stylesheet" href="/programming/public/css/custom.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/programming/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/programming/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/programming/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/programming/index.html">
+          BelajarProgramming
+        </a>
+      </h1>
+      <p class="lead">Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/programming/index.html">Utama</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/archive.html">Arkib</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/authors.html">Penulis</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://www.facebook.com/groups/belajarjs/">Facebook</a>
+      <a class="sidebar-nav-item" href="http://github.com/belajar/js">GitHub</a>
+      <a class="sidebar-nav-item" href="/programming/atom.xml">Atom Feed &nbsp;<i class="fa fa-rss-square"></i></a>
+      <!-- <span class="sidebar-nav-item">Currently v</span> -->
+    </nav>
+
+    <p style="font-size:70%">Melainkan dinyatakan sebaliknya, kesemua kandungan dalam laman ini dilesenkan di bawah <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Tentang DNS - A record vs CNAME</h1>
+    <span class="post-date">
+      Ditulis pada 2015-02-03
+      
+      
+      <span> oleh <a href="/authors/kamalmustafa.html">Kamal Mustafa</a></span>
+      
+    </span>
+  <p>Ada beberapa jenis rekod dalam dns - A record, NS record, MX record, CNAME, TXT record etc. NS record cuma apply jika kita host dns server sendiri. Cuba fahamkan terlebih bagaimana dns berfungsi, secara ringkas:-</p>
+
+<p>Kita daftar domain page.com dgn registrar - katakan Namecheap. Namecheap bagi kita control panel utk manage domain tersebut. Dalam control panel tersebut kita boleh nyatakan apakah dns server yang boleh resolv domain tersebut kepada IP address.</p>
+
+<p>Katakan kita guna dns server daripada zenpipe dan zenpipe publish dns server mereka sebagai ns1.zenpipe.com. Jadi kita pun masukkan dalam control panel Namecheap ns1.zenpipe.com. Sekarang bila client cuba resolve domain page.com, dia tau dia perlu rujuk kepada ns1.zenpipe.com.</p>
+
+<p>Zenpipe juga akan sediakan control panel utk kita manage dns record bagi page.com. Setelah login ke control panel zenpipe, kita boleh mula setup domain record utk page.com.</p>
+
+<p>Mula2 sekali kita kena tentukan page.com nak point ke IP address mana ? Maka rekod dns kita buat permulaan mungkin seperti berikut.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">page.com IN A 100.22.22.22
+</code></pre></div>
+<p>Setiap domain perlu ada sekurang-kurangnya satu A record supaya domain tu point to something.</p>
+
+<p>Setelah set A record, mungkin kita ada setup website baru - shop.page.com. Seperti yang dibincangkan sebelum ini, oleh kerana shop.page.com turut di host di server yang sama, maka kita cuma perlu setup CNAME kepada page.com.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">shop.page.com CNAME page.com
+</code></pre></div>
+<p>Ada buat website baru lagi, oleh kerana website ini agak besar, kita setup satu server baru dgn ip address 100.22.22.45. Maka kita tambah rekod dns seperti berikut:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">bigsite.page.com IN A 100.22.22.45
+</code></pre></div>
+<p>Server yang digunakan utk host bigsite.page.com turut digunakan utk host support.page.com maka kita boleh setup CNAME spt berikut:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">support.page.com CNAME bigsite.page.com
+</code></pre></div>
+<p>Setup satu website baru tapi guna service hosting kat test.test.com tapi test.com benarkan kita guna custom domain jadi boleh point custom domain tersebut kepada test.test.com:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">blog.page.com CNAME test.test.com
+</code></pre></div>
+<p>Akhir sekali rekod dns kita akan kelihatan spt berikut:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">page.com IN A 100.22.22.22
+shop.page.com CNAME page.com
+bigsite.page.com IN A 100.22.22.45
+support.page.com CNAME bigsite.page.com
+blog.page.com CNAME test.test.com
+</code></pre></div>
+<p>Nampak tak kaitan antara A record dan CNAME ?</p>
+
+</div>
+<div>
+    <a href="/tips/">Tips seterusnya ...</a>
+<div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'belajarprogramming';
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/programming/public/js/toc.js"></script>
+    <script type="text/javascript">
+	$(function() {
+	    $('#toc').toc({
+	    	title: ""
+	    });
+	    $('#toc').hide();
+	    $('#toc_toggle').click(function(){
+	    	$('#toc').toggle();
+	    })
+	});
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', '', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>BelajarProgramming</title>
+ <link href="http://belajar.github.io/programming//atom.xml" rel="self"/>
+ <link href="http://belajar.github.io/programming//"/>
+ <updated>2015-04-26T21:50:46+08:00</updated>
+ <id>http://belajar.github.io/programming/</id>
+ <author>
+   <name></name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Menguruskan Libraries/Dependencies</title>
+   <link href="http://belajar.github.io/programming//urus-libraries.html"/>
+   <updated>2015-03-29T00:00:00+08:00</updated>
+   <id>http://belajar.github.io/programming//urus-libraries</id>
+   <content type="html">&lt;p&gt;Setiap projek &lt;em&gt;programming&lt;/em&gt; sama ada besar atau kecil biasanya tidak hanya mengandungi kod-kod
+aturcara yang ditulis oleh &lt;em&gt;programmer&lt;/em&gt; itu sahaja. Ia juga akan turut mengandungi kod aturcara
+yang ditulis oleh pihak ketiga.&lt;/p&gt;
+
+&lt;p&gt;Ini kerana kebanyakkan masalah umum dalam &lt;em&gt;programming&lt;/em&gt; biasanya sudah ada penyelesaianya. Dalam
+erti kata lain, sudah wujud kod yang ditulis oleh &lt;em&gt;programmer&lt;/em&gt; lain yang dapat menyelesaikan
+masalah tersebut. Apa yang perlu dilakukan adalah mencari kod-kod tersebut dan seterusnya memasukkan
+kod tersebut bersama-sama aturcara yang kita sedang tulis ini.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Setiap bahasa pengaturcaraan mempunyai mekanisma tersendiri untuk memasukkan kod pihak ketiga ini ke dalam
+aturcara kita. Ia biasanya dapat dikenali melalui fungsi seperti &lt;code&gt;import&lt;/code&gt;, &lt;code&gt;require&lt;/code&gt;, &lt;code&gt;include&lt;/code&gt;, &lt;code&gt;load&lt;/code&gt;,
+&lt;code&gt;use&lt;/code&gt; dan sebagainya.&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>

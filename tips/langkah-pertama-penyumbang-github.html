@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Langkah Pertama Menjadi Penyumbang di Github"/>
+  <meta property="og:description" content="Bagaimana untuk mula menjadi penyumbang di Github dengan menguji patch atau pull-request daripada developer lain.
+"/>
+  <meta property="og:url" content="http://www.belajarjs.ml/tips/langkah-pertama-penyumbang-github.html" />
+  <meta property="og:image" content="http://www.belajarjs.ml/public/images/js.png"/>
+
+  <title>
+    
+      Langkah Pertama Menjadi Penyumbang di Github &middot; BelajarProgramming
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/programming/public/css/poole.css">
+  <link rel="stylesheet" href="/programming/public/css/syntax.css">
+  <link rel="stylesheet" href="/programming/public/css/hyde.css">
+  <link rel="stylesheet" href="/programming/public/css/custom.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/programming/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/programming/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/programming/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/programming/index.html">
+          BelajarProgramming
+        </a>
+      </h1>
+      <p class="lead">Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/programming/index.html">Utama</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/archive.html">Arkib</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/authors.html">Penulis</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://www.facebook.com/groups/belajarjs/">Facebook</a>
+      <a class="sidebar-nav-item" href="http://github.com/belajar/js">GitHub</a>
+      <a class="sidebar-nav-item" href="/programming/atom.xml">Atom Feed &nbsp;<i class="fa fa-rss-square"></i></a>
+      <!-- <span class="sidebar-nav-item">Currently v</span> -->
+    </nav>
+
+    <p style="font-size:70%">Melainkan dinyatakan sebaliknya, kesemua kandungan dalam laman ini dilesenkan di bawah <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Langkah Pertama Menjadi Penyumbang di Github</h1>
+    <span class="post-date">
+      Ditulis pada 2015-01-27
+      
+      
+      <span> oleh <a href="/authors/kamalmustafa.html">Kamal Mustafa</a></span>
+      
+    </span>
+  <p>Ramai developer sekarang sudah mula menggunakan Github untuk menyimpan code
+yang mereka hasilkan, ataupun mendapatkan code daripada developer lain. Namun fungsi
+sebenar Github adalah untuk memudahkan kolaborasi. Salah satu bentuk kolaborasi adalah
+dengan menguji <em>patch/changes</em> yang dihantar oleh <em>developer</em> lain.</p>
+
+<p>Mulakan dengan <em>fork</em> repo yang anda berminat untuk menjadi penyumbang. Untuk tujuan
+artikel ini, saya memilih projek Laravel di URL berikut:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://github.com/laravel/laravel
+</code></pre></div>
+<p>Setelah proses <em>fork</em> selesai, saya akan mendapat salinan repo yang sama di URL:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">https://github.com/k4ml/laravel
+</code></pre></div>
+<p>Langkah kedua adalah dengan <em>checkout</em> repo yang baru kita fork tadi:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git clone https://github.com/k4ml/laravel.git
+</code></pre></div>
+<p>Langkah ketiga - add repo asal Laravel sebagai <em>upstream</em>:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">cd laravel
+git remote add upstream https://github.com/laravel/laravel.git
+</code></pre></div>
+<p>Sekarang kita masuk ke bahagian yang ditunggu-tunggu. &#39;Menarik&#39; <em>pull-request</em> oleh developer
+lain dan mengujinya di komputer kita. Format arahan untuk tujuan ini adalah:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git fetch origin pull/&lt;pull-request-id/head:&lt;local-branch-name-to-pull&gt;
+</code></pre></div>
+<p>Anda boleh dapatkan senarai <em>pull request</em> di url https://github.com/laravel/laravel/pulls.
+Saya pilih <a href="https://github.com/laravel/laravel/pull/2821"><em>pull request</em> bernombor 2821</a>.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git fetch upstream pull/2821/head:test-pr
+</code></pre></div>
+<p>Anda akan mendapat output lebih kurang berikut:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 3 (delta 0)
+Unpacking objects: 100% (4/4), done.
+From https://github.com/laravel/laravel
+ * [new branch]      refs/pull/2821/head -&gt; test-pr
+</code></pre></div>
+<p>Untuk memastikan anda mendapat <em>changes</em> yang betul, jalankan command <code>git diff</code>:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git diff master
+</code></pre></div>
+<p>Bandingkan dengan <em>changes</em> yang anda lihat di https://github.com/laravel/laravel/pull/2821/files:-</p>
+
+<p><a href="http://i.imgur.com/P6BqGKu.png"><img src="http://i.imgur.com/P6BqGKul.png"></img></a></p>
+
+<div class="admonition-warning">
+    Output pada <code>git diff master</code> bagaimanapun turut menunjukkan perubahan pada banyak
+    fail lain juga, tidak hanya pada fail <code>public/.htaccess</code> seperti dalam gambar di atas.
+    Jika anda ada idea kenapa berlaku demikian, mohon kongsikan dalam ruangan komen di bawah.
+</div>
+
+<div>&nbsp;</div>
+
+<p>Sekarang anda boleh mula menguji <em>pull request</em> tersebut dan seterusnya berkongsi hasil yang anda dapat
+dalam ruangan <a href="https://github.com/laravel/laravel/pull/2821">diskusi</a> <em>pull request</em> berkenaan.</p>
+
+</div>
+<div>
+    <a href="/tips/">Tips seterusnya ...</a>
+<div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'belajarprogramming';
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/programming/public/js/toc.js"></script>
+    <script type="text/javascript">
+	$(function() {
+	    $('#toc').toc({
+	    	title: ""
+	    });
+	    $('#toc').hide();
+	    $('#toc_toggle').click(function(){
+	    	$('#toc').toggle();
+	    })
+	});
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', '', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+  </body>
+</html>

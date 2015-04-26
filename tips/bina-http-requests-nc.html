@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Bina HTTP requests menggunakan nc"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:url" content="http://www.belajarjs.ml/tips/bina-http-requests-nc.html" />
+  <meta property="og:image" content="http://www.belajarjs.ml/public/images/js.png"/>
+
+  <title>
+    
+      Bina HTTP requests menggunakan nc &middot; BelajarProgramming
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/programming/public/css/poole.css">
+  <link rel="stylesheet" href="/programming/public/css/syntax.css">
+  <link rel="stylesheet" href="/programming/public/css/hyde.css">
+  <link rel="stylesheet" href="/programming/public/css/custom.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/programming/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/programming/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/programming/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/programming/index.html">
+          BelajarProgramming
+        </a>
+      </h1>
+      <p class="lead">Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/programming/index.html">Utama</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/archive.html">Arkib</a>
+          
+        
+      
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/programming/authors.html">Penulis</a>
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+
+      <a class="sidebar-nav-item" href="https://www.facebook.com/groups/belajarjs/">Facebook</a>
+      <a class="sidebar-nav-item" href="http://github.com/belajar/js">GitHub</a>
+      <a class="sidebar-nav-item" href="/programming/atom.xml">Atom Feed &nbsp;<i class="fa fa-rss-square"></i></a>
+      <!-- <span class="sidebar-nav-item">Currently v</span> -->
+    </nav>
+
+    <p style="font-size:70%">Melainkan dinyatakan sebaliknya, kesemua kandungan dalam laman ini dilesenkan di bawah <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a>.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Bina HTTP requests menggunakan nc</h1>
+    <span class="post-date">
+      Ditulis pada 2015-01-28
+      
+      
+      <span> oleh <a href="/authors/kamalmustafa.html">Kamal Mustafa</a></span>
+      
+    </span>
+  <p>Untuk memeriksa <em>connection</em> dengan sesuatu laman web, saya biasanya menggunakan <code>telnet</code>
+untuk melakukan <em>http requests</em> kepada <em>server</em> laman web tersebut. Tujuan utama adalah
+untuk berhubung dengan server secara terus bagi memastikan masalah yang dihadapi tidak
+disebabkan oleh aplikasi diperingkat lebih tinggi.</p>
+
+<p>Contohnya untuk melakukan <code>GET</code> <em>request</em>:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">telnet github.io 80
+Trying 199.27.75.133...
+Connected to github.map.fastly.net.
+Escape character is &#39;^]&#39;.
+GET /
+Connection closed by foreign host.
+</code></pre></div>
+<p><code>telnet</code> mempunyai pelbagai masalah. Dalam contoh di atas, saya cuma dapat melakukan <code>GET</code>
+<em>request</em> tanpa sempat menambah sebarang <em>HTTP headers</em> seperti <code>HOST</code> sebelum server tersebut
+menutup <em>connection</em>.</p>
+
+<p>Sesetengah <em>server</em> juga akan <em>time out</em> dengan cepat sekiranya mereka tidak menerima sebarang
+data selepas <em>establish connection</em>. Lagi satu oleh kerana arahan di atas dimasukkan secara
+interaktif, ianya tidak boleh diulang atau diautomasi dalam bentuk <em>script</em>.</p>
+
+<p>Menggunakan <code>nc</code> nampaknya lebih baik. Contohnya untuk melakukan request beserta dengan <code>HOST</code>
+<em>header</em> sekali:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">echo -en &quot;HEAD / HTTP/1.1\r\nHOST: k4ml.github.io\r\n\r\n&quot; | nc k4ml.github.io 80
+</code></pre></div>
+<p>Dan anda akan mendapat output:-</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
+Server: GitHub.com
+Content-Type: text/html
+Last-Modified: Fri, 12 Apr 2013 23:26:51 GMT
+Expires: Sun, 26 May 2013 19:40:06 GMT
+Cache-Control: max-age=600
+Content-Length: 9991
+Accept-Ranges: bytes
+Date: Sun, 26 May 2013 19:30:07 GMT
+Via: 1.1 varnish
+Age: 0
+Connection: keep-alive
+X-Served-By: cache-s34-SJC2
+X-Cache: MISS
+X-Cache-Hits: 0
+X-Timer: S1369596606.987305880,VS0,VE145
+Vary: Accept-Encoding
+</code></pre></div>
+</div>
+<div>
+    <a href="/tips/">Tips seterusnya ...</a>
+<div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+var disqus_shortname = 'belajarprogramming';
+(function() {
+var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/programming/public/js/toc.js"></script>
+    <script type="text/javascript">
+	$(function() {
+	    $('#toc').toc({
+	    	title: ""
+	    });
+	    $('#toc').hide();
+	    $('#toc_toggle').click(function(){
+	    	$('#toc').toggle();
+	    })
+	});
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', '', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+  </body>
+</html>
