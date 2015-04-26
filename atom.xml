@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>BelajarProgramming</title>
+ <title>BelajarPrg</title>
  <link href="http://belajar.github.io/programming//atom.xml" rel="self"/>
  <link href="http://belajar.github.io/programming//"/>
- <updated>2015-04-26T21:50:46+08:00</updated>
+ <updated>2015-04-26T21:59:00+08:00</updated>
  <id>http://belajar.github.io/programming/</id>
  <author>
    <name></name>
