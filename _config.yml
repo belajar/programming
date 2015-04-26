@@ -10,10 +10,10 @@ permalink:            :title.html
 relative_permalinks:  true
 
 # Setup
-title:              BelajarJS
-tagline:            'Belajar JavaScript !'
+title:              BelajarProgramming
+tagline:            'Belajar Programming !'
 description:        'Suatu projek untuk memperkaya bahan berkenaan pembangunan perisian dan web dalam Bahasa Melayu.'
-url:                http://belajar.github.io/js/
+url:                http://belajar.github.io/programming/
 baseurl:            'js'
 paginate:           5
 excerpt_separator:  '<!--more-->'
