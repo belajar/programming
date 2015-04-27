@@ -73,3 +73,4 @@ dependencies* ini. Berikut disenaraikan beberapa *tools* berkenaan:-
 ## Rujukan
 * http://en.wikipedia.org/wiki/Dependency_graph
 * https://en.opensuse.org/openSUSE:Libzypp_satsolver
+* http://sahandsaba.com/understanding-sat-by-implementing-a-simple-sat-solver-in-python.html
